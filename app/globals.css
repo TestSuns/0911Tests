@@ -1,0 +1,66 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.header-form {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+
+.border-right {
+    border-right: 1px solid #eeeeee;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.full-height {
+    height: 80vh;
+}
+
+.c-nav {
+    margin-top: 30px;
+    list-style: none;
+}
+
+.c-nav-item {
+    font-size: 20px;
+    border-left: 5px solid blue;
+    border-radius: 3px;
+    padding: 0 0 0 20px;
+
+}
+
+.right-area {
+    padding-top: 30px;
+}
+
+
+.nav-underline .nav-link.active {
+    border-bottom: var(--bs-nav-underline-border-width) solid red !important;
+}
+
+
+.nav-link {
+    color: black !important;
+}
+
+.c-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
