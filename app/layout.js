@@ -6,43 +6,51 @@ import Image from 'react-bootstrap/Image';
 
 import {Inter} from 'next/font/google'
 import {Container} from "react-bootstrap";
+import InputGroup from 'react-bootstrap/InputGroup';
+import {BiSearch} from "react-icons/bi";
 
 const inter = Inter({subsets: ['latin']})
 
 
 export default function RootLayout({children}) {
-    return (
-        <html lang="en">
-        <body className={inter.className}>
+    return (<html lang="en">
+    <body className={inter.className}>
 
-        <header>
-            <Navbar className="header justify-content-between " bg="dark" data-bs-theme="dark">
-                <Container>
-                   <div>
-                       <Image className="avatar" src="/user.png" roundedCircle/>
-                       <Form inline={true} className="header-form">
-                           <Form.Control
-                               placeholder="Username"
-                               aria-label="Username"
-                               aria-describedby="basic-addon1"
-                           />
-                       </Form>
-                   </div>
+    <header>
 
-                    <div>
-                        <Image className="avatar"  src="/user.png" roundedCircle/>
-                    </div>
-                </Container>
+        <Navbar className="header justify-content-between c-container " bg="dark">
+                <div className={'flex-between'}>
+                    <Image className="avatar" src="/user.png" roundedCircle/>
+                    <Form inline className={'header-form'}>
+                        <InputGroup className="c-input">
+                            <Form.Control
+                                placeholder="Search or dump to..."
+                                aria-label="Search or dump to..."
+                                aria-describedby="basic-addon1"
+                            />
+                            <InputGroup.Text id="basic-addon2"><BiSearch/></InputGroup.Text>
+                        </InputGroup>
+                    </Form>
+                </div>
 
-            </Navbar>
-        </header>
+                <div>
+                    <Image className="avatar" src="/user.png" roundedCircle/>
+                </div>
 
-        <main>
-            {children}
-        </main>
+        </Navbar>
+    </header>
+
+    <main>
+        {children}
+    </main>
 
 
-        </body>
-        </html>
-    )
+    <footer className={'footer c-container'}>
+        <Image className="avatar" src="/user.png" roundedCircle/>
+        <span>Project Management System</span>
+    </footer>
+
+
+    </body>
+    </html>)
 }
