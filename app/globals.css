@@ -38,12 +38,16 @@
 }
 
 .c-nav-item {
-    font-size: 20px;
-    border-left: 5px solid blue;
-    border-radius: 3px;
-    padding: 0 0 0 20px;
-
+    font-size: 16px;
+    padding: 10px 0 10px 20px;
+    margin-bottom: 20px;
+    background-color: rgb(244,245,247);
 }
+.c-nav-active{
+    border-left: 5px solid blue;
+    border-radius: 5px;
+}
+
 
 .right-area {
     padding-top: 30px;
@@ -63,4 +67,101 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+}
+
+
+.project-card {
+    position: relative;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 20px 20px 0 0 ;
+}
+
+.project-card  .mr10{
+    margin-right: 10px;
+}
+
+.red-text{
+    color: red;
+}
+
+
+.project-card .card-title{
+    padding: 20px 10px;
+    margin-top: 10px;
+}
+.project-card .card-title h3{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.project-card .card-title h4{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.project-card .card-desc {
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+.project-card .card-group-count {
+    font-size: 12px;
+    padding: 0 10px;
+}
+.project-card .card-group-count .count {
+    font-weight: bold;
+}
+
+.project-card .card-group-count div {
+    font-size: 12px;
+    color: gray;
+}
+
+
+
+.float-right {
+    position: absolute;
+    right: 0;
+    top :-1px;
+}
+
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+.flex-around{
+    display: flex;
+    justify-content: space-around;
+}
+.small-avatar{
+    width: 40px;
+    height: 40px;
+}
+
+.empty-card{
+    width: 300px;
+    height: 270px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.empty-card button{
+    margin-top:  20px;
+}
+
+
+.footer{
+    margin-top: 20px;
+}
+.footer span{
+    margin-left: 20px;
+}
+
+.c-container{
+    padding:  10px 40px;
 }
