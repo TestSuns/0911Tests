@@ -15,8 +15,26 @@ import Form from "react-bootstrap/Form";
 import ProjectCard from "@/components/project-card/projectCard";
 import {IoIosAddCircle} from "react-icons/io";
 import InputGroup from "react-bootstrap/InputGroup";
+import  ProjectAdd from "@/components/project-add/projectAdd";
+import {useState} from "react";
+
 
 export default function Home() {
+
+    function addOperation(){
+        setShow(true);
+        setIsNote(true);
+    }
+
+    function quickAddOperation(){
+        setShow(true);
+        setIsNote(false);
+    }
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+
+    const [isNote,setIsNote]=useState(false);
     return (
             <Row>
                 <Col sm={3} className="border-right full-height border-bottom">
@@ -68,9 +86,10 @@ export default function Home() {
 
 
                                     <div className={'empty-card'}>
-                                        <IoIosAddCircle size="60" alignmentBaseline={"baseline"}/>
-                                        <h3 className={'add-project'}>Add Project</h3>
-                                        <Button variant="success">Quick Add</Button>
+                                        <IoIosAddCircle size="60" alignmentBaseline={"baseline"}  variant="primary" onClick={addOperation} />
+                                        <ProjectAdd show={show} handleClose={handleClose} isNote={isNote} ></ProjectAdd>
+                                        <h3 className={'add-project'} >Add Project</h3>
+                                        <Button variant="success" onClick={quickAddOperation} >Quick Add</Button>
                                     </div>
 
                                     <ProjectCard/>
