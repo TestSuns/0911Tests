@@ -38,13 +38,12 @@ export default function projectAdd({show, handleClose, isNote}) {
                             autoFocus
                         />
                     </Form.Group>
-                    {content}
                 </Form>
             </Modal.Body>
 
             <Modal.Footer>
                 <Button variant="success" onClick={handleClose}>
-                    Submit
+                    Add
                 </Button>
                 <Button variant="light" onClick={handleClose}>
                     Cancel

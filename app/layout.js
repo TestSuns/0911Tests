@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image';
 
 import {Inter} from 'next/font/google'
-import {Container} from "react-bootstrap";
 import InputGroup from 'react-bootstrap/InputGroup';
 import {BiSearch} from "react-icons/bi";
 
@@ -24,8 +23,8 @@ export default function RootLayout({children}) {
                     <Form inline className={'header-form'}>
                         <InputGroup className="c-input">
                             <Form.Control
-                                placeholder="Search or dump to..."
-                                aria-label="Search or dump to..."
+                                placeholder="Search or jump to..."
+                                aria-label="Search or jump to..."
                                 aria-describedby="basic-addon1"
                             />
                             <InputGroup.Text id="basic-addon2"><BiSearch/></InputGroup.Text>

@@ -4,11 +4,13 @@ import {BiDotsHorizontal, BiEdit, BiShare} from "react-icons/bi";
 import {Button, Dropdown, DropdownButton} from "react-bootstrap";
 import {AiFillGithub} from "react-icons/ai";
 import Image from 'react-bootstrap/Image';
-import {BsShare} from "react-icons/bs";
-import {GiHidden} from "react-icons/gi";
 import {FiDelete} from "react-icons/fi";
 
-export default function ProjectCard() {
+export default function ProjectCard({dataResult}) {
+    if(dataResult.source_type=="GitHub"){
+
+
+    }
 
 
     return (<div className={'project-card'}>
@@ -20,8 +22,6 @@ export default function ProjectCard() {
 
             <Dropdown.Menu>
                 <Dropdown.Item> <BiEdit/> Edit</Dropdown.Item>
-                <Dropdown.Item><BsShare/> Share</Dropdown.Item>
-                <Dropdown.Item> <GiHidden/> Hide</Dropdown.Item>
                 <Dropdown.Item className={'red-text'}> <FiDelete/> Delete</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
@@ -29,36 +29,38 @@ export default function ProjectCard() {
 
         <div className={'flex-between card-title'}>
             <div>
-                <h3>a long repo nameLily</h3>
-                <h4>Username</h4>
+                <h3>{dataResult.project_title}</h3>
+                <h4>{dataResult.user_name}</h4>
             </div>
-            <Image className={'small-avatar'} src="/user.png" roundedCircle/>
+            <Image className={'small-avatar'} src={dataResult.user_avatar} roundedCircle/>
         </div>
 
         <p className={'card-desc'}>
-            Lorem ipsum dolor sit amet.
+            {dataResult.project_description}
         </p>
 
         <div className={'flex-around'}>
+            if(dataResult.source_type=="GitHub"){
+
+        }
+            <div className={'card-group-count'}>
+                <GrGroup/> <span className={'count'}>{dataResult.contributor}</span>
+                <div>Contributor</div>
+            </div>
 
             <div className={'card-group-count'}>
-                <GrGroup/> <span className={'count'}>123</span>
+                <GrGroup/> <span className={'count'}>{dataResult.used_by}</span>
                 <div>Used By</div>
             </div>
 
             <div className={'card-group-count'}>
-                <GrGroup/> <span className={'count'}>123</span>
-                <div>Used By</div>
+                <GrGroup/> <span className={'count'}>{dataResult.stars}</span>
+                <div>Stars</div>
             </div>
 
             <div className={'card-group-count'}>
-                <GrGroup/> <span className={'count'}>123</span>
-                <div>Used By</div>
-            </div>
-
-            <div className={'card-group-count'}>
-                <GrGroup/> <span className={'count'}>123</span>
-                <div>Used By</div>
+                <GrGroup/> <span className={'count'}>{dataResult.forks}</span>
+                <div>Forked</div>
             </div>
 
         </div>
@@ -66,8 +68,7 @@ export default function ProjectCard() {
         <hr/>
 
         <div className={'flex-between'}>
-            <Button size="sm" variant="outline-secondary"><AiFillGithub/> Github</Button>
-            <Button size="sm" variant="success">Original</Button>
+            <Button size="sm" variant="outline-secondary"><AiFillGithub/> GitHub</Button>
         </div>
 
     </div>);
