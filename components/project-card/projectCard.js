@@ -6,7 +6,15 @@ import {AiFillGithub} from "react-icons/ai";
 import Image from 'react-bootstrap/Image';
 import {FiDelete} from "react-icons/fi";
 
+import React, { useState } from 'react';
+import ProjectDelete from 'components/project-delete/projectDelete';
+
+
+
 export default function ProjectCard({dataResult}) {
+
+    const [showDeleteModal, setShowDeleteModal] = useState(false);  // State variable for delete modal
+
     if(dataResult.source_type=="GitHub"){
 
 
@@ -22,8 +30,11 @@ export default function ProjectCard({dataResult}) {
 
             <Dropdown.Menu>
                 <Dropdown.Item> <BiEdit/> Edit</Dropdown.Item>
-                <Dropdown.Item className={'red-text'}> <FiDelete/> Delete</Dropdown.Item>
-            </Dropdown.Menu>
+                <Dropdown.Item className="red-text" onClick={() => setShowDeleteModal(true)}>  {/* Modified line */}
+                    <FiDelete /> Delete
+                </Dropdown.Item>
+
+        </Dropdown.Menu>
         </Dropdown>
 
 
@@ -70,6 +81,9 @@ export default function ProjectCard({dataResult}) {
         <div className={'flex-between'}>
             <Button size="sm" variant="outline-secondary"><AiFillGithub/> GitHub</Button>
         </div>
+
+        <ProjectDelete show={showDeleteModal} handleClose={() => setShowDeleteModal(false)} />
+
 
     </div>);
 }
