@@ -14,13 +14,11 @@ const inter = Inter({subsets: ['latin']})
 export default function RootLayout({children}) {
     return (<html lang="en">
     <body className={inter.className}>
-
     <header>
-
         <Navbar className="header justify-content-between c-container " bg="dark">
                 <div className={'flex-between'}>
                     <Image className="avatar" src="/user.png" roundedCircle/>
-                    <Form inline className={'header-form'}>
+                    <Form inline={'true'} className={'header-form'}>
                         <InputGroup className="c-input">
                             <Form.Control
                                 placeholder="Search or jump to..."

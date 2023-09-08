@@ -1,23 +1,74 @@
-import {GrAdd, GrGroup} from "react-icons/gr";
+import {GrAdd, GrGithub, GrGroup, GrView} from "react-icons/gr";
 
-import {BiDotsHorizontal, BiEdit, BiShare} from "react-icons/bi";
+import {BiDotsHorizontal, BiEdit, BiLogoGithub, BiShare} from "react-icons/bi";
 import {Button, Dropdown, DropdownButton} from "react-bootstrap";
-import {AiFillGithub} from "react-icons/ai";
+import {AiFillGithub, AiFillGitlab, AiOutlineGithub} from "react-icons/ai";
 import Image from 'react-bootstrap/Image';
 import {FiDelete} from "react-icons/fi";
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ProjectDelete from 'components/project-delete/projectDelete';
-
+import {DiBitbucket} from "react-icons/di";
 
 
 export default function ProjectCard({dataResult}) {
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);  // State variable for delete modal
 
-    if(dataResult.source_type=="GitHub"){
+    let icon = '';
+    let information ='';
 
+    if (dataResult.source_type == "GitHub") {
+        information = (
+            <>
+                <div className={'card-group-count'}>
+                    <GrGroup/> <span className={'count'}>{dataResult.contributor}</span>
+                    <div>Contributor</div>
+                </div>
 
+                <div className={'card-group-count'}>
+                    <GrGroup/> <span className={'count'}>{dataResult.used_by}</span>
+                    <div>Used By</div>
+                </div>
+
+                <div className={'card-group-count'}>
+                    <GrGroup/> <span className={'count'}>{dataResult.stars}</span>
+                    <div>Stars</div>
+                </div>
+
+                <div className={'card-group-count'}>
+                    <GrGroup/> <span className={'count'}>{dataResult.forks}</span>
+                    <div>Forked</div>
+                </div>
+            </>
+        );
+        icon = <Button  size="sm" variant="outline-primary"><BiLogoGithub/> GitHub</Button>;
+    }
+    if (dataResult.source_type == "GitLab") {
+        information = (
+            <>
+                <div className={'card-group-count'}>
+                    <GrGroup/> <span className={'count'}>{dataResult.stars}</span>
+                    <div>Stars</div>
+                </div>
+            </>
+        );
+        icon = <Button size="sm" variant="outline-danger"><AiFillGitlab/> GitLab</Button>;
+    }
+    if (dataResult.source_type == "BitBucket") {
+        information = (
+            <>
+                <div className={'card-group-count'}>
+                    <GrView/> <span className={'count'}>{dataResult.views}</span>
+                    <div>Views</div>
+                </div>
+                <div className={'card-group-count'}>
+                    <GrGroup/> <span className={'count'}>{dataResult.forks}</span>
+                    <div>Forked</div>
+                </div>
+            </>
+        );
+        icon = <Button size="sm" variant="outline-info"><DiBitbucket/> BitBucket</Button>;
     }
 
 
@@ -31,10 +82,10 @@ export default function ProjectCard({dataResult}) {
             <Dropdown.Menu>
                 <Dropdown.Item> <BiEdit/> Edit</Dropdown.Item>
                 <Dropdown.Item className="red-text" onClick={() => setShowDeleteModal(true)}>  {/* Modified line */}
-                    <FiDelete /> Delete
+                    <FiDelete/> Delete
                 </Dropdown.Item>
 
-        </Dropdown.Menu>
+            </Dropdown.Menu>
         </Dropdown>
 
 
@@ -51,38 +102,14 @@ export default function ProjectCard({dataResult}) {
         </p>
 
         <div className={'flex-around'}>
-            if(dataResult.source_type=="GitHub"){
-
-        }
-            <div className={'card-group-count'}>
-                <GrGroup/> <span className={'count'}>{dataResult.contributor}</span>
-                <div>Contributor</div>
-            </div>
-
-            <div className={'card-group-count'}>
-                <GrGroup/> <span className={'count'}>{dataResult.used_by}</span>
-                <div>Used By</div>
-            </div>
-
-            <div className={'card-group-count'}>
-                <GrGroup/> <span className={'count'}>{dataResult.stars}</span>
-                <div>Stars</div>
-            </div>
-
-            <div className={'card-group-count'}>
-                <GrGroup/> <span className={'count'}>{dataResult.forks}</span>
-                <div>Forked</div>
-            </div>
-
+            {information}
         </div>
-
         <hr/>
-
         <div className={'flex-between'}>
-            <Button size="sm" variant="outline-secondary"><AiFillGithub/> GitHub</Button>
+            {icon}
         </div>
 
-        <ProjectDelete show={showDeleteModal} handleClose={() => setShowDeleteModal(false)} />
+        <ProjectDelete show={showDeleteModal} handleClose={() => setShowDeleteModal(false)}/>
 
 
     </div>);
